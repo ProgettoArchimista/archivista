@@ -1,0 +1,13 @@
+<% if collection.present? %>
+  <h2><%= t('creators') %></h2>
+  <ul>
+  <% collection.each do |creator| %>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a creator_path(creator) con current_context_object_path(creator) %>
+<%# Upgrade 2.0.0 fine %>
+    <li><%= link_to "#{creator.preferred_name.name}", current_context_object_path(creator) %>
+      <%= creator.preferred_event.full_display_date if creator.preferred_event %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

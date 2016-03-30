@@ -1,0 +1,19 @@
+<% if collection.present? %>
+  <h2><%= t('fonds') %></h2>
+  <ul>
+  <% collection.each do |fond| %>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a fond_path(fond) con current_context_object_path(fond) %>
+<%# Upgrade 2.0.0 fine %>
+    <li><%= link_to "#{fond.name}", current_context_object_path(fond) %>
+     <%= "(" + fond.preferred_event.full_display_date + ")" if fond.preferred_event %>
+     <% if fond.ancestry_depth + 1 != 1 %>
+      <br /><span><%= fond.fond_type.capitalize + ", " + t('level').downcase + " " + (fond.ancestry_depth + 1).to_s %></span>
+     <% end %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>
+
+<%# TODO - da sviluppare tutta la parte di collegamenti scons/prog/contenuto in %>
+<%# vedi: http://www.lombardiabeniculturali.it/archivi/profili-documentari/MIBO00008D/ %>

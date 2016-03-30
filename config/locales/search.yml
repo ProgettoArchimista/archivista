@@ -1,0 +1,7 @@
+en:
+  weight: "relevance"
+  order_date: "date"
+it:
+  weight: "rilevanza"
+  order_date: "data"
+

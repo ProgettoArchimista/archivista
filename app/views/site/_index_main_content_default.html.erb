@@ -1,0 +1,46 @@
+<div style="text-align: justify;">
+  <div>
+    <h2 style="font-size: 14px; font-weight: normal; border: none; margin-bottom: 0px; margin-top: 0px;">
+			<% if Settings.app_edition == "standalone" %>
+				Benvenuto in <strong><%= application_name %>&nbsp;<%= application_version %></strong>.
+			<% else %>
+				Benvenuto in <strong><%= application_name %>&nbsp;<%= application_version %></strong>, evoluzione di ArchimistaWeb.
+			<% end %>
+    </h2>
+    <p style="font-size: 13px;">
+      Applicazione web multipiattaforma gratuita ed open source per la pubblicazione di banche dati archivistiche prodotte con Archimista.
+      <br />
+      <br />
+      Sito ufficiale:&nbsp;<%= link_to("www.archimista.it", "http://www.archimista.it", { target: "_blank" } ) %>
+      <br />
+      Contatti:&nbsp;<%= link_to("archimista@polimi.it", "mailto:archimista@polimi.it" ) %>
+      <br />
+      Discussioni e contributi: <%= link_to("forum Archimista", "http://www.archiviando.org/forum/viewforum.php?f=64", { target: "_blank" } ) %> in Archiviando di ANAI Lombardia. 
+    </p>
+  </div>
+
+  <div style="margin-top: 1em;">
+    <h2 style="font-size: 14px; font-weight: normal; border: none; margin-bottom: 0px;">
+			<%
+				case Settings.app_edition
+					when "standalone"
+						prj_caption = "Il progetto Archimista e " + application_name 
+					else
+						prj_caption = "Il progetto " + application_name
+				end
+			%>
+      <strong><%= prj_caption %></strong>
+    </h2>
+    <p style="font-size: 13px;">
+      <%= application_name %> nasce da un accordo tra Regione Lombardia e Politecnico di Milano.
+      <br />
+      <%= application_name %>&nbsp;<%= application_version %> &egrave; sviluppato da TAI S.a.s., ed &egrave; un'evoluzione di ArchimistaWeb 1.0.
+      <br />
+      <%= application_name %> &egrave; rilasciato con licenza open source GPL nella prospettiva di incentivarne lo sviluppo e la crescita.
+      <br />
+      <%= application_name %> &egrave; realizzato nel rispetto degli standard archivistici, dei parametri del SAN e di NIERA.
+      <br />
+			Consente la pubblicazione di banche dati archivistiche prodotte con Archimista (o convertite in Archimista) anche comprensive di oggetti digitali.
+    </p>
+  </div>
+</div>

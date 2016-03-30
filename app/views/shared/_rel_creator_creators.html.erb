@@ -1,0 +1,15 @@
+<% if collection.present? %>
+  <h2><%= t('linked_creators')%></h2>
+  <ul>
+  <% collection.each do |creator| %>
+    <li>
+      (<%= creator.creator_association_type ? creator.creator_association_type.association_type : "qualifica non presente" %>)
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a creator_path(creator.related_creator) con current_context_object_path(creator.related_creator) %>
+<%# Upgrade 2.0.0 fine %>
+      <%= link_to creator.related_creator.preferred_name.name, current_context_object_path(creator.related_creator) %>
+      <%= creator.related_creator.preferred_event.full_display_date if creator.related_creator.preferred_event %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

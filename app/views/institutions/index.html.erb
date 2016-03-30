@@ -1,0 +1,30 @@
+<% title t('institutions') %>
+
+<h1><%= t('institutions') %></h1>
+<% if @institutions.size > 0 %>
+  <%= page_entries_info @institutions %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+<%# Upgrade 2.0.0 inizio %>
+        <%# th class="span12" %>
+        <th class="col-xs-12">
+<%# Upgrade 2.0.0 fine %>
+          <%= t('institutions_name') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @institutions.each do |institution| %>
+        <tr>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a institution_path(institution) con current_context_object_path(institution) %>
+<%# Upgrade 2.0.0 fine %>
+          <td><%= link_to institution.name, current_context_object_path(institution) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Non sono presenti schede profilo istituzionale.</p>
+<% end %>

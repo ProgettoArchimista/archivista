@@ -1,0 +1,29 @@
+<% title t('custodians') %>
+
+<h1><%= t('custodians') %></h1>
+<% if @custodians.size > 0 %>
+  <%= page_entries_info @custodians %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t('custodian_name') %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @custodians.each do |custodian| %>
+      <tr class="<%= cycle("odd", "even") %>">
+        <td>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a custodian con current_context_object_path(custodian) %>
+<%# Upgrade 2.0.0 fine %>
+          <%= link_to custodian.name, current_context_object_path(custodian) %><%= ", #{custodian.custodian_headquarter.city}" if custodian.custodian_headquarter.present? %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= bs_paginate @custodians %>
+<% else %>
+  <p>Non sono presenti schede soggetto conservatore.</p>
+<% end %>
+

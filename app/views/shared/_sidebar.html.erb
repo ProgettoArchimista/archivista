@@ -1,0 +1,16 @@
+<%# Upgrade 2.0.0 inizio %>
+<%# nelle chiamate a nav_link cambiato il riferimento alla funzione che ritorna il path. ad es. fonds_path diventa current_context_fonds_path %>
+<%# Upgrade 2.0.0 fine %>
+
+<div class="sidebar-nav well">
+  <ul class="nav nav-list">
+    <%= nav_link('fonds', current_context_fonds_path) %>
+    <%= nav_link('creators', current_context_creators_path) %>
+    <%= nav_link('custodians', current_context_custodians_path) %>
+    <li class="divider"></li>
+    <%= nav_link('institutions', current_context_institutions_path) %>
+    <%= nav_link('document_forms', current_context_document_forms_path) %>
+    <li class="divider"></li>
+    <%= nav_link('projects', current_context_projects_path) %>
+  </ul>
+</div>

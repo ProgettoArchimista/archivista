@@ -1,0 +1,11 @@
+<% if collection.present? %>
+  <h2><%= t('institutions') %></h2>
+  <ul>
+  <% collection.each do |institution| %>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a institution_path(institution) con current_context_object_path(institution) %>
+<%# Upgrade 2.0.0 fine %>
+    <li><%= link_to "#{institution.name}", current_context_object_path(institution) %></li>
+  <% end %>
+  </ul>
+<% end %>

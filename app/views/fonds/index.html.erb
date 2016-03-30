@@ -1,0 +1,28 @@
+<% title t('fonds') %>
+
+<h1><%= t('fonds') %></h1>
+<%= page_entries_info @fonds %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('name') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @fonds.each do |fond| %>
+    <tr class="<%= cycle("odd", "even") %>">
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a fond_path con current_context_object_path %>
+<%# Upgrade 2.0.0 fine %>
+      <td><%= link_to fond.name, current_context_object_path(fond) %>
+        <% if fond.fond_type.present? %>
+          <span class="muted">(<%= fond.fond_type %>)</span>
+        <% end %><br />
+        <%= fond.preferred_event.try(:full_display_date) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= bs_paginate @fonds %>
+

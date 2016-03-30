@@ -1,0 +1,13 @@
+<%# Upgrade 2.0.0 inizio %>
+<div id="logos_area_container">
+  <% @group_logo_images.each_with_index do |group_image, index| %>
+    <% imgClassName = (index == 0) ? "imgGroupImageLogo imgGroupImageLogoFirst" : "imgGroupImageLogo imgGroupImageLogoOther" %>
+
+    <% if !group_image.description.nil? && group_image.description != "" %>
+      <%= link_to image_tag(group_image.asset(:logo), :class => imgClassName), group_image.description, { target: "_blank", title: group_image.description } %>
+    <% else %>
+      <%= image_tag(group_image.asset(:logo), :class => imgClassName) %>
+    <% end %>
+  <% end %>
+</div>
+<%# Upgrade 2.0.0 fine %>

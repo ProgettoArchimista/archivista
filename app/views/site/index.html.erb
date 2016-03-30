@@ -1,0 +1,61 @@
+<%# Upgrade 2.0.0 inizio %>
+
+<div class="row" style="margin-top: 20px; margin-bottom: 20px;">
+  <%
+    if @carousel_images.nil? || @carousel_images.count == 0
+      main_content_class_name = "col-xs-11"
+    else
+      main_content_class_name = "col-xs-6"
+    end
+  %>
+
+  <div class="<%= main_content_class_name %>">
+    <% if @group.nil? %>
+      <%= render :partial => "index_main_content_default" %>
+    <% else %>
+      <%= render :partial => "index_main_content_group" %>
+    <% end %>
+  </div>
+  <% if !@carousel_images.nil? && @carousel_images.count > 0 %>
+    <div class="col-xs-5 offset1">
+      <%= render :partial => "carousel" %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-xs-3">
+    <h2><%= t('fonds') %></h2>
+    <p>
+      <small>Vedi tutti: <%= link_to "#{number_with_delimiter(@fonds_count)} #{t('fonds').downcase} »", current_context_fonds_path %></small>
+    </p>
+  </div>
+  <div class="col-xs-3">
+    <h2><%= t('creators') %></h2>
+    <p>
+      <small>Vedi tutti: <%= link_to "#{number_with_delimiter(@creators_count)} #{t('creators').downcase} »", current_context_creators_path %></small>
+    </p>
+  </div>
+  <div class="col-xs-3">
+    <h2><%= t('custodians') %></h2>
+    <p>
+      <small>Vedi tutti: <%= link_to "#{number_with_delimiter(@custodians_count)} #{t('custodians').downcase} »", current_context_custodians_path %></small>
+    </p>
+  </div>
+  <div class="col-xs-3">
+    <h2><%= t('projects') %></h2>
+    <p>
+      <small>Vedi tutti: <%= link_to "#{number_with_delimiter(@projects_count)} #{t('projects').downcase} »", current_context_projects_path %></small>
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <% if @group.nil? || @group_logo_images.nil? || @group_logo_images.count == 0 %>
+    <%= render :partial => "logos_area_default" %>
+  <% else %>
+    <%= render :partial => "logos_area_group" %>
+  <% end %>
+</div>
+
+<%# Upgrade 2.0.0 fine %>

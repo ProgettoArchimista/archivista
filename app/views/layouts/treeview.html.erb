@@ -1,0 +1,78 @@
+<% title @unit ? @unit.name : @fond.name %>
+
+<% content_for :content do %>
+<div class="row-fluid">
+<%# Upgrade 2.0.0 inizio %>
+<%# div id="treeview-content" class="span12" %>
+  <%# div id="fonds-tree-wrapper" class="span3" %>
+<div id="treeview-content" class="col-xs-12">
+  <div id="fonds-tree-wrapper" class="col-xs-3">
+<%# Upgrade 2.0.0 fine %>
+    <div id="fonds-tree">
+      <%# filled by jsTree %>
+    </div>
+    <div id="tree-controls">
+      <span id="handle" class="ui-resizable-handle">|||</span>
+    </div>
+  </div>
+
+  <div id="main">
+    <div id="main-wrapper">
+      <ul id="tabs" class="nav nav-tabs">
+        <li class="<%= active_if controller_name, "fonds" %>">
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a fond_path(@fond) con current_context_object_path(@fond) %>
+<%# Upgrade 2.0.0 fine %>
+          <a id="tab-fonds" href="<%= current_context_object_path(@fond) %>"><%= t('description') %></a>
+        </li>
+<%# Upgrade 2.0.0 inizio %>
+        <%# href = @units.size.zero? ? "#" : fond_unit_path(@fond, @units.first) %>
+        <% href = @units.size.zero? ? "#" : current_context_fond_unit_path(@fond, @units.first) %>
+<%# Upgrade 2.0.0 fine %>
+        <li class="<%= active_if controller_name, "units" %>">
+          <a id="tab-units" href="<%= href %>"><%= t('units') %></a>
+        </li>
+      </ul>
+      <div class="tab-content">
+
+        <div class="tab-pane<%= active_if controller_name, "fonds" %>" id="description">
+          <% if controller_name == 'fonds' %>
+            <div id="main-fond">
+              <div id="fonds-wrapper">
+                <%= render "fonds/description", :object => @fond %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="tab-pane<%= active_if controller_name, "units" %>" id="units">
+          <% if controller_name == 'units' %>
+<%# Upgrade 2.0.0 inizio %>
+            <%# div id="units-tree-wrapper" class="span4" %>
+            <div id="units-tree-wrapper" class="col-xs-4">
+<%# Upgrade 2.0.0 fine %>
+              <div id="units-tree">
+                <%= render "units/list", :object => @units if @units %>
+              </div>
+            </div>
+
+            <div>
+<%# Upgrade 2.0.0 inizio %>
+              <%# div id="main-unit" class="span8" %>
+              <div id="main-unit" class="col-xs-8">
+<%# Upgrade 2.0.0 fine %>
+                <div id="units-wrapper">
+                  <%= render "units/description", :object => @unit if @unit %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<% end %>
+
+<%= render :template => 'layouts/application' %>

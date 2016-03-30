@@ -1,0 +1,30 @@
+<% title t('document_forms') %>
+
+<h1><%= t('document_forms') %></h1>
+<% if @document_forms.size > 0 %>
+  <%= page_entries_info @document_forms %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+<%# Upgrade 2.0.0 inizio %>
+        <%# th class="span12" %>
+        <th class="col-xs-12">
+<%# Upgrade 2.0.0 fine %>
+          <%= t('document_forms_name') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @document_forms.each do |document_form| %>
+        <tr class="<%= cycle("odd", "even") %>">
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a document_form_path(document_form) con current_context_object_path(document_form) %>
+<%# Upgrade 2.0.0 fine %>
+          <td><%= link_to document_form.name, current_context_object_path(document_form) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Non sono presenti schede profilo documentario.</p>
+<% end %>

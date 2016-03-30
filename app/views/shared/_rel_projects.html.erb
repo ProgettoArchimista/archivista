@@ -1,0 +1,13 @@
+<% if collection.present? %>
+  <h2><%= t('projects') %></h2>
+  <ul>
+  <% collection.each do |project| %>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a project_path(project) con current_context_object_path(project) %>
+<%# Upgrade 2.0.0 fine %>
+    <li><%= link_to "#{project.name}", current_context_object_path(project) %>
+     <%= "(" + project .try(:display_date)  + ")"  %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

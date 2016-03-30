@@ -1,0 +1,32 @@
+<% title t('creators') %>
+
+<h1><%= t('creators') %></h1>
+<% if @creators.size > 0 %>
+  <%= page_entries_info @creators %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t('creator_name') %></th>
+        <th><%= t('creator_type') %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @creators.each do |creator| %>
+      <tr>
+        <td>
+          <%= creator.residence + ", " if creator.residence.present? %>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a creator con current_context_object_path(creator) %>
+<%# Upgrade 2.0.0 fine %>
+          <%= link_to creator.name, current_context_object_path(creator) %>
+          <%= creator.preferred_event.try(:full_display_date) %>
+        </td>
+        <td><%= creator.full_creator_type %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= bs_paginate @creators %>
+<% else %>
+  <p>Non sono presenti schede soggetto produttore.</p>
+<% end %>

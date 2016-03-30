@@ -1,0 +1,26 @@
+<% title t('groups') %>
+
+<h1><%= t('groups') %></h1>
+
+<div>
+E' possibile consultare <%= link_to "l'intera banca dati", "/" %> o separatamente i dati associati ad uno dei seguenti gruppi (Istituti/Enti)
+</div>
+
+<%= page_entries_info @groups %>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= t('name') %></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @groups.each do |group| %>
+    <tr class="<%= cycle("odd", "even") %>">
+      <td>
+        <%= link_to group.name, group_path(group.short_name.blank? ? group.id : group.short_name) %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= bs_paginate @groups %>

@@ -1,0 +1,13 @@
+<% if collection.present? %>
+  <h2><%= t('document_forms') %></h2>
+  <ul>
+  <% collection.each do |document_forms| %>
+    <li>
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a document_form_path(document_form) con current_context_object_path(document_form) %>
+<%# Upgrade 2.0.0 fine %>
+      <%= link_to "#{document_form.name}", current_context_object_path(document_form) %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

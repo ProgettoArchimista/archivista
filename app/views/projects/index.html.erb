@@ -1,0 +1,39 @@
+<% title t('projects') %>
+
+<h1><%= t('projects') %></h1>
+<% if @projects.size > 0 %>
+  <%= page_entries_info @projects %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+<%# Upgrade 2.0.0 inizio %>
+        <%# th class="span6" %>
+        <th class="col-xs-6">
+<%# Upgrade 2.0.0 fine %>
+          <%= t('name') %>
+        </th>
+<%# Upgrade 2.0.0 inizio %>
+        <%# th class="span2" %>
+        <th class="col-xs-2">
+<%# Upgrade 2.0.0 fine %>
+          <%= t('duration') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @projects.each do |project| %>
+      <tr class="<%= cycle("odd", "even") %>">
+<%# Upgrade 2.0.0 inizio %>
+<%# cambiato il riferimento a project con current_context_object_path(project) %>
+<%# Upgrade 2.0.0 fine %>
+        <td><%= link_to "#{project.name}", current_context_object_path(project) %></td>
+        <td><%= project.display_date %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= bs_paginate @projects %>
+<% else %>
+  <p>Non sono presenti schede progetto.</p>
+<% end %>
+

@@ -1,0 +1,27 @@
+<%# Upgrade 2.0.0 inizio %>
+<div id="home-carousel" class="carousel slide">
+  <% if @carousel_images.count > 1 %>
+    <ol class="carousel-indicators">
+      <% @carousel_images.each_with_index do |group_image, index| %>
+        <li data-target="#home-carousel" data-slide-to="<%=index %>" <%= (index == 0) ? raw("class=\"active\"") : "" %> ></li>
+      <% end %>
+    </ol>
+  <% end %>
+  <div class="carousel-inner">
+    <% @carousel_images.each_with_index do |group_image, index| %>
+      <div class="<%= (index == 0 ? 'active item' : 'item') %>" >
+        <img src="<%= group_image.asset(:carousel) %>" alt="" class="imgGroupImageCarousel">
+        <% if !group_image.description.nil? && group_image.description != "" %>
+          <div class="carousel-caption">
+            <p><%= group_image.description %> </p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <% if @carousel_images.count > 1 %>
+    <a class="carousel-control left" href="#home-carousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#home-carousel" data-slide="next">&rsaquo;</a>
+  <% end %>
+</div>
+<%# Upgrade 2.0.0 fine %>
