@@ -10,6 +10,7 @@ config/database.yml
 db/*.sqlite3
 !log
 log/*
+!log/.gitkeep
 tmp/
 .rails_footnotes
 .sass-cache/
