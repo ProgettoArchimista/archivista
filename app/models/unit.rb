@@ -142,7 +142,6 @@ class Unit < ActiveRecord::Base
       units.map do |u|
         value = case u.ancestry_depth
                 when 0
-                  [index += 1].to_s
 # Upgrade 2.0.0 inizio
 #                  [index += 1].to_s
                   index += 1

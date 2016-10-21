@@ -37,7 +37,10 @@
 
 <% if @fond.extent.present? %>
 <p>
-  <strong><%= t('extent') %></strong>:
+<%# Upgrade 2.2.0 inizio %>
+<%# cambiato extent in fond_extent %>
+  <strong><%= t('fond_extent') %></strong>:
+<%# Upgrade 2.2.0 inizio %>
   <%= @fond.extent %>
 </p>
 <% end %>

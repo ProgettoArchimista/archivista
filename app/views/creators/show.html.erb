@@ -2,7 +2,20 @@
 
 <h1>
   <%= @creator.display_name %>
-  <span>(<%= @creator.preferred_event.try(:full_display_date_with_place) || 's.d.' %>)</span>
+<%# Upgrade 2.2.0 inizio %>
+  <%= show_item(@creator.preferred_name.note, ["[","]"]) %>
+<%# Upgrade 2.2.0 fine %>
+
+<%# Upgrade 2.2.0 inizio %>
+<%# aggiunte le note alla data %>
+  <span>
+    (
+      <% d1 = @creator.preferred_event.try(:full_display_date_with_place) || "s.d." %>
+      <% d2 = @creator.preferred_event.try(:note) %>
+      <%= if (d2.nil?) then d1 else d1 + " " + d2 end %>
+    )
+  </span>
+  <%# Upgrade 2.2.0 fine %>
 </h1>
 
 <p>

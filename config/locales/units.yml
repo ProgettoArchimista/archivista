@@ -152,11 +152,15 @@ en:
   numbered_from: "Numbered from"
   alt_title: "Alternative title"
 # Upgrade 2.0.0 inizio
-  CARS: "CARS - Cartografia storica"
-  D: "D - Disegno artistico"
-  DT: "DT - Disegno Tecnico"
-  F: "F - Fotografia"
-  S: "S - Stampa"
+# Upgrade 2.2.0 inizio
+  unit_extent: "Extent"
+  units_sc2_tsk:
+    CARS: "CARS - Cartografia storica"
+    D: "D - Disegno artistico"
+    DT: "DT - Disegno Tecnico"
+    F: "F - Fotografia"
+    S: "S - Stampa"
+# Upgrade 2.2.0 fine
   sc2_tsk: "Scheda speciale"
   sc2_textual_elements: "Elementi testuali"
   new_sc2_textual_elements: "Aggiungi elemento testuale"
@@ -345,11 +349,15 @@ it:
   formatted_title: "Titolo"
   root_fond_id: "Complesso"
 # Upgrade 2.0.0 inizio
-  CARS: "CARS - Cartografia storica"
-  D: "D - Disegno artistico"
-  DT: "DT - Disegno Tecnico"
-  F: "F - Fotografia"
-  S: "S - Stampa"
+# Upgrade 2.2.0 inizio
+  unit_extent: "Consistenza"
+  units_sc2_tsk:
+    CARS: "CARS - Cartografia storica"
+    D: "D - Disegno artistico"
+    DT: "DT - Disegno Tecnico"
+    F: "F - Fotografia"
+    S: "S - Stampa"
+# Upgrade 2.2.0 fine
   sc2_tsk: "Scheda speciale"
   sc2_textual_elements: "Elementi testuali"
   new_sc2_textual_elements: "Aggiungi elemento testuale"

@@ -34,6 +34,9 @@ ThinkingSphinx::Index.define :fond, :with => :active_record do
 # Upgrade 2.0.0 inizio
   has :group_id
 # Upgrade 2.0.0 fine
+# Upgrade 2.2.0 inizio
+  where "trashed=0"
+# Upgrade 2.2.0 fine
 end
 
 ThinkingSphinx::Index.define :unit, :with => :active_record do
@@ -49,4 +52,7 @@ ThinkingSphinx::Index.define :unit, :with => :active_record do
 # Upgrade 2.0.0 inizio
   has fond.group_id, :as => :group_id, :type => :integer
 # Upgrade 2.0.0 fine
+# Upgrade 2.2.0 inizio
+  where "fonds.trashed=0"
+# Upgrade 2.2.0 fine
 end
