@@ -19,7 +19,9 @@ tmp/
 config/*.sphinx.conf
 db/dumps/
 db/sphinx/
-public/assets/
+!public/assets
+public/assets/*
+!public/assets/jsTree
 
 config/settings.local.yml
 config/settings/*.local.yml
