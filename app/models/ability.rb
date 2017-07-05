@@ -14,11 +14,15 @@ class Ability
 =end
   def initialize(current_user)
     if current_user.group_id.nil?
-      can :read, Fond, :trashed => false
-      can :read, [Creator, Custodian, Source, DigitalObject, Institution, DocumentForm, Project, Editor]
+# Upgrade 3.0.0 inizio	
+      can :read, Fond, :trashed => false, :published => true
+      can :read, [Project, DigitalObject, Creator, Custodian], :published => true
+      can :read, [Source, Institution, DocumentForm, Editor]
     else
-      can :read, Fond, :trashed => false, :group_id => current_user.group_id
-      can :read, [Creator, Custodian, Source, DigitalObject, Institution, DocumentForm, Project, Editor], :group_id => current_user.group_id
+      can :read, Fond, :trashed => false, :group_id => current_user.group_id, :published => true
+      can :read, [Project, DigitalObject, Creator, Custodian], :group_id => current_user.group_id,  :published => true
+      can :read, [Source, DigitalObject, Institution, DocumentForm, Project, Editor], :group_id => current_user.group_id
+# Upgrade 3.0.0 fine	  
     end
   end
 # Upgrade 2.2.0 fine

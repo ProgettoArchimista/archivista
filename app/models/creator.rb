@@ -67,7 +67,10 @@ class Creator < ActiveRecord::Base
   has_many :rel_creator_fonds
 # Upgrade 2.0.0 inizio
 #  has_many :fonds, :through => :rel_creator_fonds, :include => :preferred_event, :order => "fonds.name"
-  has_many :fonds, -> {order("fonds.name").includes(:preferred_event)}, :through => :rel_creator_fonds
+# has_many :fonds, -> { order("fonds.name").includes(:preferred_event)}, :through => :rel_creator_fonds
+# Upgrade 3.0.0 inizio
+  has_many :fonds, -> {where(published: 1).order("fonds.name").includes(:preferred_event)}, :through => :rel_creator_fonds
+# Upgrade 3.0.0 fine  
 # Upgrade 2.0.0 fine
 
   has_many :rel_creator_institutions

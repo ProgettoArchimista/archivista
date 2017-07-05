@@ -28,16 +28,38 @@ class Fond < ActiveRecord::Base
   # OPTIMIZE: disambiguare nome dell'associazione => descendant_units_of_root ???
   has_many :descendant_units, :class_name => "Unit", :foreign_key => :root_fond_id, :readonly => true
 =end
-  has_many :units, -> { order("units.sequence_number") }
+# has_many :units, -> { order("units.sequence_number") }
+# Upgrade 3.0.0 inizio
+  has_many :units, -> {where(published: 1).order("units.sequence_number") }
+# Upgrade 3.0.0 fine  
   has_many :descendant_units, -> {readonly}, :class_name => "Unit", :foreign_key => :root_fond_id
 # Upgrade 2.0.0 fine
 
   def active_descendant_units_count
+# Upgrade 3.0.0 inizio
+# Nascosti i fond non pubblicati dalla visualizzazione e gli eventuali figli di nodi non pubblicati
+  not_published_parent_ids = Fond.where(:id => subtree_ids, :published => false).map(&:id)
+  hidden_ids = Array.new
+  not_published_parent_ids.each do |nppid|
+    hidden_ids += Fond.find(nppid).subtree_ids
+  end
+
+  not_hidden_ids = Array.new
+  not_hidden_ids = subtree_ids - hidden_ids
+  Unit.joins(:fond).where({:fond_id => not_hidden_ids, :published => true, :fonds => {:trashed => false, :published => true}}).count("id")
+# Upgrade 3.0.0 fine
+
 # Upgrade 2.0.0 inizio
 #    Unit.count("id", :joins => :fond, :conditions => {:fond_id => subtree_ids, :fonds => {:trashed => false}})
-    Unit.joins(:fond).where({:fond_id => subtree_ids, :fonds => {:trashed => false}}).count("id")
+#    Unit.joins(:fond).where({:fond_id => subtree_ids, :published => true, :fonds => {:trashed => false, :published => true}}).count("id")
 # Upgrade 2.0.0 fine
   end
+
+# Upgrade 3.0.0 inizio
+  def total_count_published_unit
+    Unit.joins(:fond).where({:published => true, :fonds => {:id => self.id, :trashed => false, :published => true}}).count("id")
+  end
+# Upgrade 3.0.0 fine
 
 # Upgrade 2.0.0 inizio
 #  has_many :digital_objects, :as => :attachable, :order => :position

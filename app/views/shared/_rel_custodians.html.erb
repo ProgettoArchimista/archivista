@@ -6,7 +6,13 @@
 <%# Upgrade 2.0.0 inizio %>
 <%# cambiato il riferimento a custodian_path(custodian) con current_context_object_path(custodian) %>
 <%# Upgrade 2.0.0 fine %>
-      <%= link_to "#{custodian.preferred_name.name}", current_context_object_path(custodian) %>
+<%# Upgrade 3.0.0 inizio %>
+	<% if custodian.published == true %>
+    	<%= link_to "#{custodian.preferred_name.name}", current_context_object_path(custodian) %>
+    <% else %>
+    	<%= "#{custodian.preferred_name.name}" %>
+    <% end %>
+<%# Upgrade 3.0.0 fine %>  
     </li>
   <% end %>
   </ul>

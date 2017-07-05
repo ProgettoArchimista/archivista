@@ -4,7 +4,21 @@ module Tree
 #  def fast_subtree_to_jstree_hash(prepared_subtree=nil)
   def fast_subtree_to_jstree_hash(str_group_context_path, prepared_subtree=nil)
 # Upgrade 2.0.0 fine
-	prepared_subtree ||= subtree.select_for_tree.active.order_for_tree
+# Upgrade 3.0.0 inizio
+# Nascosti i fond non pubblicati dalla visualizzazione e gli eventuali figli di nodi non pubblicati
+  subtree_ids = self.subtree_ids
+  not_published_parent_ids = Fond.where(:id => subtree_ids, :published => false).map(&:id)
+  hidden_ids = Array.new
+  not_published_parent_ids.each do |nppid|
+    hidden_ids += Fond.find(nppid).subtree_ids
+  end
+  #prepared_subtree ||= subtree.select_for_tree.active.order_for_tree
+	if hidden_ids.empty?
+	  prepared_subtree ||= subtree.select_for_tree.active.order_for_tree
+	else
+	  prepared_subtree ||= subtree.select_for_tree.active.order_for_tree.where('id NOT IN (?)',hidden_ids)
+	end
+# Upgrade 3.0.0 fine
 
 # Upgrade 2.0.0 inizio
 =begin
@@ -48,7 +62,6 @@ module Tree
       }
     }
   end
-=end
   def to_jstree_hash(str_group_context_path)
     {
       :data => {
@@ -65,7 +78,27 @@ module Tree
       }
     }
   end
+=end
 # Upgrade 2.0.0 fine
+
+# Upgrade 3.0.0 inizio
+def to_jstree_hash(str_group_context_path)
+    {
+      :data => {
+        :title => name,
+        :attr => {
+          :href => "#{str_group_context_path}/fonds/#{id}",
+          :class => "changeable",
+        }
+      },
+      :attr => {
+        :id => "node-#{id}",
+        :class => "node",
+        :'data-units' => total_count_published_unit
+      }
+    }
+  end
+# Upgrade 3.0.0 fine
 
 # Upgrade 2.0.0 inizio
 =begin
@@ -79,12 +112,12 @@ module Tree
 # Upgrade 2.0.0 fine
 
   def break_groups_by_key(array, opts={})
-
     return self if array.empty?
 
     seed        = opts[:seed]
     key_attr    = opts[:key].to_sym
     group_attr  = opts[:attr].to_sym
+
 # Upgrade 2.0.0 inizio
     str_group_context_path = opts[:group_context_path]
 # Upgrade 2.0.0 fine

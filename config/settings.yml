@@ -7,16 +7,16 @@
 app_edition: "server"   # standalone/server
 #
 server_app_name: "ArchiVista"
-server_app_version: "2.2.0"
+server_app_version: "3.0.0"
 server_site_name: "ArchiVista"
 server_site_short_name: "ArchiVista"
-server_site_version: "2.2.0"
+server_site_version: "3.0.0"
 #
 standalone_app_name: "ArchiVista"
-standalone_app_version: "2.2.0"
+standalone_app_version: "3.0.0"
 standalone_site_name: "ArchiVista"
 standalone_site_short_name: "ArchiVista"
-standalone_site_version: "2.2.0"
+standalone_site_version: "3.0.0"
 
 # Upgrade 2.0.0 fine
 
