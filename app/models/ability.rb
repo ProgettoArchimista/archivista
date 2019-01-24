@@ -21,7 +21,7 @@ class Ability
     else
       can :read, Fond, :trashed => false, :group_id => current_user.group_id, :published => true
       can :read, [Project, DigitalObject, Creator, Custodian], :group_id => current_user.group_id,  :published => true
-      can :read, [Source, DigitalObject, Institution, DocumentForm, Project, Editor], :group_id => current_user.group_id
+      can :read, [Source, Institution, DocumentForm, Project, Editor], :group_id => current_user.group_id
 # Upgrade 3.0.0 fine	  
     end
   end

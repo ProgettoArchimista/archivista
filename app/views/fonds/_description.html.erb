@@ -106,7 +106,7 @@
   <strong><%= t('fond_urls')%></strong>:
   <ul>
     <% @fond.fond_urls.each do |fu_name| %>
-      <li><%= fu_name.url %> (<%= fu_name.note %>)</li>
+      <li><a target="_blank" href="<%= fu_name.url %>"><%= fu_name.url %></a> (<%= fu_name.note %>)</li>
     <% end %>
   </ul>
 </p>

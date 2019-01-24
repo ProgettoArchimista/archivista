@@ -23,7 +23,8 @@
   <ul>
     <% @custodian.other_names.each do |other_name| %>
       <li>
-          <%= show_item(other_name.name) %> <%= show_item(t(other_name.qualifier), ["<span>(",")</span>"]) %>
+          <%= show_item(other_name.name) %>
+          <span><%= show_item(t(other_name.qualifier), ["(",")"]) %></span>
           <%= show_item(other_name.note, ["[","]"]) %>
       </li>
     <% end %>
@@ -81,7 +82,7 @@
   <strong><%= t('custodian_urls') %></strong>:
   <ul>
     <% @custodian.custodian_urls.each do |cu_name| %>
-      <li><%= link_to show_item(cu_name.url), show_item(cu_name.url)  %> <%= show_item(cu_name.note, ["[","]"]) %></li>
+      <li><a target="_blank" href="<%= show_item(cu_name.url) %>"><%= show_item(cu_name.url) %></a> <%= show_item(cu_name.note, ["[","]"]) %></li>
     <% end %>
   </ul>
 </p>

@@ -73,7 +73,7 @@
   <strong><%= t('creator_urls')%></strong>
   <ul>
     <% @creator.creator_urls.each do |cu_name| %>
-      <li><%= show_item(cu_name.url) %> <%= show_item(cu_name.note, ["[","]"]) %></li>
+      <li><a target="_blank" href="<%= show_item(cu_name.url) %>"><%= show_item(cu_name.url) %></a> <%= show_item(cu_name.note, ["[","]"]) %></li>
     <% end %>
   </ul>
   </p>

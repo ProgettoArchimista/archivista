@@ -1,11 +1,13 @@
 <%
   items = [];
   @unit.digital_objects.each do |dob|
-    object = {}
-    object['src'] = dob.asset(:large)
-    title = dob.title.blank? ? "" : dob.title
-    object['title'] = title
-    items << object
+	if dob.published == true
+		object = {}
+		object['src'] = dob.asset(:large)
+		title = dob.title.blank? ? "" : dob.title
+		object['title'] = title
+		items << object
+	end
   end
 %>
 

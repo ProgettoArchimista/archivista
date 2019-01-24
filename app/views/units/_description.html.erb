@@ -405,15 +405,39 @@
 <%= render "shared/sources", :collection => @unit.sources %>
 <%= render 'shared/editors', :collection => @unit.unit_editors %>
 
-<% if @unit.first_digital_object.present? %>
+<%
+	thumb_digital = nil
+	@unit.digital_objects.each do |dob|
+		if dob.published == true
+			thumb_digital = {}
+			thumb_digital['src'] = dob.asset(:thumb)
+			title = dob.title.blank? ? "" : dob.title
+			thumb_digital['title'] = title
+			break
+		end
+	end
+	
+	items = [];
+	  @unit.digital_objects.each do |dob|
+		if dob.published == true
+			object = {}
+			object['src'] = dob.asset(:large)
+			title = dob.title.blank? ? "" : dob.title
+			object['title'] = title
+			items << object
+		end
+	  end
+%>
+
+<% if (@unit.first_digital_object.present?) && (!thumb_digital.nil?) %>
 <ul class='thumbnails'>
 <%# Upgrade 2.0.0 inizio %>
   <%# li class='span4' %>
   <li class='col-xs-4'>
 <%# Upgrade 2.0.0 fine %>
-    <div class='thumbnail'>
-    <%= link_to image_tag(@unit.first_digital_object.asset(:thumb), :title => @unit.first_digital_object.title), '#', :class => 'thumbnail', :id => 'popup-gallery' %>
-    <p><%= @unit.digital_objects.size %> immagini</p>
+    <div class='thumbnail'>	
+		<%= link_to image_tag(thumb_digital['src'], :title => thumb_digital['title']), '#', :class => 'thumbnail', :id => 'popup-gallery' %>
+    <p><%= items.size %> immagini</p>
     </div>
   </li>
 </ul>

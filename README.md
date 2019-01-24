@@ -27,7 +27,7 @@ Attivare il motore di ricerca testuale:
 
 ## Crediti
 
-ArchiVista 3.0.0 è sviluppato da INGLOBA360 s.r.l., ed è un'evoluzione di ArchimistaWeb 1.0.
+ArchiVista 3 è sviluppato da INGLOBA360 s.r.l., ed è un'evoluzione di ArchimistaWeb 1.0.
 
 ## Autori (ArchimistaWeb)
 Codex Società Cooperativa, Pavia
