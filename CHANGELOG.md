@@ -1,4 +1,4 @@
-## Archivista 3.1
+## Archivista 3.1.0
 Adeguamento numero di versione a Archimista
 
 ## Archivista 3.0.0 (23 dicembre 2016)
