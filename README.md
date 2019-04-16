@@ -25,8 +25,10 @@ ArchiVista 3 è sviluppato da INGLOBA360 s.r.l., ed è un'evoluzione di Archimis
 ## Autori
 Codex Società Cooperativa, Pavia
 * [http://www.codexcoop.it](http://www.codexcoop.it)
+
 TAI S.a.s.
 * [http://www.taisas.com](http://www.taisas.com)
+
 Lo sviluppo attuale di ArchiVista è curato da INGLOBA360 s.r.l.
 * [http://www.ingloba360.it](http://www.ingloba360.it)
 
