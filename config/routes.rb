@@ -7,6 +7,8 @@ Archiweb::Application.routes.draw do
   get 'searchunavailable', :to => 'search#searchunavailable'
 # Upgrade 2.0.0 fine
 
+  get 'fonds/:fond_id/units', :to => 'units#index'
+
   resources :fonds, :only => [:index, :show] do
     member do
       get 'tree'

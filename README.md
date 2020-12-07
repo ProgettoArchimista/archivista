@@ -1,4 +1,3 @@
-
 ## ArchiVista
 ArchiVista pubblica le descrizioni archivistiche prodotte con Archimista.
 Sito ufficiale: [www.archimista.it](www.archimista.it)
@@ -27,6 +26,7 @@ Codex Società Cooperativa, Pavia
 * [http://www.codexcoop.it](http://www.codexcoop.it)
 
 TAI S.a.s.
+
 * [http://www.taisas.com](http://www.taisas.com)
 
 Lo sviluppo attuale di ArchiVista è curato da INGLOBA360 s.r.l.
@@ -34,3 +34,4 @@ Lo sviluppo attuale di ArchiVista è curato da INGLOBA360 s.r.l.
 
 ## Licenza
 ArchiVista è rilasciato sotto licenza GNU General Public License v2.0 o successive.
+

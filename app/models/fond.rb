@@ -61,6 +61,23 @@ class Fond < ActiveRecord::Base
   end
 # Upgrade 3.0.0 fine
 
+# Upgrade 3.0.0 inizio
+  def total_count_published_unit_children
+    Unit.joins(:fond).where({:published => true, :fonds => {:id => self.id, :trashed => false, :published => true}, :ancestry => nil}).count("id")
+  end
+# Upgrade 3.0.0 fine
+
+  def total_count_published_unit_children2
+    Unit.joins(:fond).where({:fond_id => subtree_ids, :ancestry_depth =>0, :fonds => {:trashed => false}}).count("id")
+  end
+
+def active_descendant_units_count
+# Upgrade 2.0.0 inizio
+#    Unit.count("id", :joins => :fond, :conditions => {:fond_id => subtree_ids, :fonds => {:trashed => false}})
+    Unit.joins(:fond).where({:fond_id => subtree_ids, :fonds => {:trashed => false}, :ancestry => nil}).count("id")
+# Upgrade 2.0.0 fine
+  end
+
 # Upgrade 2.0.0 inizio
 #  has_many :digital_objects, :as => :attachable, :order => :position
   has_many :digital_objects, -> { order(:position) }, :as => :attachable

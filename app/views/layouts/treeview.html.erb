@@ -1,5 +1,4 @@
 <% title @unit ? @unit.name : @fond.name %>
-
 <% content_for :content do %>
 <div class="row-fluid">
 <%# Upgrade 2.0.0 inizio %>
@@ -27,7 +26,7 @@
         </li>
 <%# Upgrade 2.0.0 inizio %>
         <%# href = @units.size.zero? ? "#" : fond_unit_path(@fond, @units.first) %>
-        <% href = @units.size.zero? ? "#" : current_context_fond_unit_path(@fond, @units.first) %>
+        <% href = @units.size.zero? ? current_context_object_path(@fond) + "/units" : current_context_fond_unit_path(@fond, @units.first) %>
 <%# Upgrade 2.0.0 fine %>
         <li class="<%= active_if controller_name, "units" %>">
           <a id="tab-units" href="<%= href %>"><%= t('units') %></a>

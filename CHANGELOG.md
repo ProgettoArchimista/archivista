@@ -1,3 +1,7 @@
+## Archivista 3.1.1
+Impostato l'autorun di ThinkingSphinx.
+Modificato il conteggio delle unità archivistiche.
+
 ## Archivista 3.1.0
 Adeguamento numero di versione a Archimista
 

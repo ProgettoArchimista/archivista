@@ -5,3 +5,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 Archiweb::Application.load_tasks
+
+# utilizzato per l'avvio automatico di ThinkingSphinx
+Rails.rake = true

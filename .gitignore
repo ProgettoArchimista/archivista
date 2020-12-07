@@ -35,3 +35,5 @@ nbproject
 .project
 .redcar
 
+/Gemfile.lock
+/config/secrets.yml

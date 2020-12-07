@@ -115,7 +115,7 @@ $(document).ready(function() {
 
       var units_count = $(this).parent("li").data('units');
       if (units_count !== 0) {
-        $(this).append(' <em>(' + units_count + ')</em>');
+        $(this).append(' <em>(' + units_count + ' di primo livello)</em>');
       }
       
 /* Upgrade 2.0.0 inizio */
@@ -127,11 +127,11 @@ $(document).ready(function() {
     var units;
 /* Upgrade 2.0.0 fine */
     units = $("#node-" + initial_node_id).data('units');
-    disable_units_link(units);
+    //disable_units_link(units);
   });
 
   /* Scroll to selected unit on page load */
-  if (suffix === 'units' && initial_unit_id !== undefined) {
+  if (suffix === 'units' && initial_unit_id) {
     $("#units-tree-wrapper").scrollTo($("#unit-" + initial_unit_id).parents('tr'), 800, {
       axis: 'y'
     });
@@ -161,11 +161,12 @@ $(document).ready(function() {
     $('#tab-units').attr('href', href);
   });
 
-  /* Disable tab-units if there is nothing */
-  $("#fonds-tree").on("click", ".changeable", function() {
-    units = $(this).parent().data('units');
-    disable_units_link(units);
-  });
+
+  // /* Disable tab-units if there is nothing */
+  // $("#fonds-tree").on("click", ".changeable", function() {
+  //   units = $(this).parent().data('units');
+  //   disable_units_link(units);
+  // });
 
   /* Load description of the first unit in the list */
 /* Upgrade 2.0.0 inizio */

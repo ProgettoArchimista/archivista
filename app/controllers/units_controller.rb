@@ -26,7 +26,7 @@ class UnitsController < ApplicationController
       end
 =end
       if @units.size.zero?
-        redirect_to current_context_object_url(@fond)
+        render "units/list", :layout => "treeview"
       else
         redirect_to current_context_fond_unit_path(@fond, @units.first)
       end

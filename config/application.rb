@@ -67,3 +67,14 @@ module Archiweb
 # Upgrade 2.0.0 fine
   end
 end
+
+# utilizzato per l'avvio automatico di ThinkingSphinx
+module Rails
+  def self.rake?
+    !!@rake
+  end
+
+  def self.rake=(value)
+    @rake = !!value
+  end
+end

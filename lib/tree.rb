@@ -12,12 +12,20 @@ module Tree
   not_published_parent_ids.each do |nppid|
     hidden_ids += Fond.find(nppid).subtree_ids
   end
+
   #prepared_subtree ||= subtree.select_for_tree.active.order_for_tree
 	if hidden_ids.empty?
 	  prepared_subtree ||= subtree.select_for_tree.active.order_for_tree
+          prepared_subtree.each do |p|
+            p[:units_count]=p.total_count_published_unit_children2
+          end
 	else
 	  prepared_subtree ||= subtree.select_for_tree.active.order_for_tree.where('id NOT IN (?)',hidden_ids)
+          prepared_subtree.each do |p|
+            p[:units_count]=p.total_count_published_unit_children2
+          end
 	end
+
 # Upgrade 3.0.0 fine
 
 # Upgrade 2.0.0 inizio
@@ -33,6 +41,7 @@ module Tree
       :group_context_path => str_group_context_path,
       :seed => true)
 # Upgrade 2.0.0 fine
+
 
     list = [groups.first.second]
 
@@ -94,7 +103,8 @@ def to_jstree_hash(str_group_context_path)
       :attr => {
         :id => "node-#{id}",
         :class => "node",
-        :'data-units' => total_count_published_unit
+        :'data-units' => units_count
+       # :'data-units' => total_count_published_unit
       }
     }
   end
@@ -132,6 +142,7 @@ def to_jstree_hash(str_group_context_path)
       groups << [array.first.send(key_attr), array.first.send(group_attr, str_group_context_path)]
     end
 
+
     # create the groups
 # Upgrade 2.0.0 inizio
 =begin
@@ -155,6 +166,8 @@ def to_jstree_hash(str_group_context_path)
     groups
   end
 
+
+
   def find_in_nested_list(list, ids)
     last_id = ids.pop
 
@@ -166,3 +179,4 @@ def to_jstree_hash(str_group_context_path)
   end
 
 end
+

@@ -59,3 +59,4 @@ Di seguito si elencano le responsabilità di progetto per gli anni precedenti
 
 *Attività*: sviluppo core di Archimista con data entry, viste e ordinamento dati
 *Rilasci*: versione 1.0.0, 1.1.0
+

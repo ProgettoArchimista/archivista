@@ -1,4 +1,4 @@
-## Archimista FAQ 3.1.0
+## Archimista FAQ 3.1.1
 
 **È possibile estrarre un complesso o un’unità includendo tutta la gerarchia (ascendenza e discendenza)?**
 Sì. Il tracciato relativo ad un complesso ora contiene: tutta l’ascendenza (se presente) a partire dal complesso radice secondo una struttura breve contenente solo *unitid* e *unittitle*; il complesso oggetto di esportazione; tutta la discendenza (se presente); le unità archivistiche associate al complesso oggetto di esportazione ed ai complessi figli. Il tracciato relativo ad una unità ora contiene: tutta l’ascendenza sia in termini di complessi che di unità a partire dal complesso radice secondo una struttura breve contenente solo *unitid* e *unittitle*; l’unità oggetto di esportazione; tutta la discendenza (se presente).
@@ -59,3 +59,4 @@ Per dettagli consulta la pagina [Note di rilascio](http://www.archimista.it/?pag
 * produzione di report per Complesso archivistico, Progetto o Soggetto conservatore
 * upload multiplo di oggetti digitali
 * creazione sotto-unità e sotto-sotto-unità e possibilità di modificarne il livello
+
