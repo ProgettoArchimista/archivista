@@ -1,6 +1,5 @@
 ## ArchiVista
 ArchiVista pubblica le descrizioni archivistiche prodotte con Archimista.
-Sito ufficiale: [www.archimista.it](www.archimista.it)
 
 ## Requisiti
 * Ruby 2.1.5
